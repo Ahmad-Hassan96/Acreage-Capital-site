@@ -1021,6 +1021,25 @@ footer {
   .form-row { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
 }
+
+.gmail-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  background: var(--white);
+  transition: border-color var(--trans), background var(--trans);
+}
+.gmail-btn:hover { border-color: var(--accent); background: var(--gray-bg); }
+.gmail-btn:hover .gmail-arrow { color: var(--accent); transform: translateX(4px); }
+.gmail-icon { font-size: 1.25rem; flex-shrink: 0; width: 32px; text-align: center; }
+.gmail-btn > span:nth-child(2) { flex: 1; display: flex; flex-direction: column; gap: 0.15rem; }
+.gmail-btn strong { font-family: "Montserrat", sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.03em; }
+.gmail-btn > span:nth-child(2) > span { font-size: 0.78rem; color: var(--text-lt); font-weight: 300; }
+.gmail-arrow { font-size: 1rem; color: var(--gray-md); transition: color var(--trans), transform var(--trans); flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -1480,7 +1499,7 @@ footer {
         <h2 class="sec-title" style="margin-bottom:1.5rem;">Contact <strong>Information</strong></h2>
         <div class="contact-item">
           <div class="c-icon">📍</div>
-          <div><h4>Office Location</h4><p>Lahore, Punjab, Pakistan</p></div>
+          <div><h4>Office Location</h4><p>DHA Phase 6, 313 MB, 4th Floor<br>Lahore, Punjab, Pakistan</p></div>
         </div>
         <div class="contact-item">
           <div class="c-icon">@</div>
@@ -1492,7 +1511,7 @@ footer {
         </div>
         <div class="contact-item">
           <div class="c-icon">🕐</div>
-          <div><h4>Business Hours</h4><p>Monday – Friday<br>6:00 PM – 3:00 AM PKT</p></div>
+          <div><h4>Business Hours</h4><p>Monday – Friday<br>9:00 AM – 6:00 PM PKT</p></div>
         </div>
         <div class="contact-item">
           <div class="c-icon">in</div>
@@ -1502,23 +1521,43 @@ footer {
 
       <div class="contact-form-wrap">
         <div class="cf-title">Send Us a Message</div>
-        <div class="cf-sub">We'll respond within one business day.</div>
-        <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" placeholder="Ahmad"></div>
-          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Hassan"></div>
+        <div class="cf-sub">Click below to email us directly. Your Gmail will open pre-filled and ready to send.</div>
+        <div style="display:flex;flex-direction:column;gap:1.25rem;margin-top:1.5rem;">
+          <a href="mailto:info@acreagecapital.pk?subject=General%20Inquiry%20%E2%80%94%20Acreage%20Capital%20Solutions" target="_blank"
+            onclick="openGmail(event,'General Inquiry')"
+            class="gmail-btn">
+            <span class="gmail-icon">✉</span>
+            <span>
+              <strong>General Inquiry</strong>
+              <span>Questions about our services or operations</span>
+            </span>
+            <span class="gmail-arrow">→</span>
+          </a>
+          <a href="mailto:info@acreagecapital.pk?subject=Career%20Opportunity%20%E2%80%94%20Acreage%20Capital%20Solutions" target="_blank"
+            onclick="openGmail(event,'Career Opportunity')"
+            class="gmail-btn">
+            <span class="gmail-icon">👤</span>
+            <span>
+              <strong>Career Opportunity</strong>
+              <span>Apply for a role or ask about open positions</span>
+            </span>
+            <span class="gmail-arrow">→</span>
+          </a>
+          <a href="mailto:info@acreagecapital.pk?subject=Business%20Inquiry%20%E2%80%94%20Acreage%20Capital%20Solutions" target="_blank"
+            onclick="openGmail(event,'Business Inquiry')"
+            class="gmail-btn">
+            <span class="gmail-icon">💼</span>
+            <span>
+              <strong>Business Inquiry</strong>
+              <span>Partnership or service-related discussions</span>
+            </span>
+            <span class="gmail-arrow">→</span>
+          </a>
         </div>
-        <div class="form-group"><label>Email Address</label><input type="email" placeholder="ahmad@email.com"></div>
-        <div class="form-group" id="inqTypeGroup">
-          <label>Inquiry Type</label>
-          <select id="inqType">
-            <option value="">Select an option</option>
-            <option>Career Opportunity</option>
-            <option>Business Inquiry</option>
-            <option>General Question</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Message</label><textarea id="msgField" placeholder="Tell us about your inquiry or interest..."></textarea></div>
-        <button class="btn-red" style="width:100%;text-align:center;" onclick="submitForm()">Send Message</button>
+        <p style="margin-top:1.5rem;font-size:0.78rem;color:var(--text-lt);font-weight:300;">
+          Prefer to write directly? Email us at
+          <a href="mailto:info@acreagecapital.pk" style="color:var(--accent);text-decoration:none;">info@acreagecapital.pk</a>
+        </p>
       </div>
     </div>
   </div>
@@ -1543,7 +1582,7 @@ footer {
     </div>
     <div class="f-col">
       <h5>Contact</h5>
-      <p>info@acreagecapital.pk<br>careers@acreagecapital.pk<br><br>Lahore, Punjab, Pakistan<br>Mon–Fri, 9AM–6PM PKT</p>
+      <p>info@acreagecapital.pk<br>careers@acreagecapital.pk<br><br>DHA Phase 6, 313 MB, 4th Floor<br>Lahore, Punjab, Pakistan<br>Mon–Fri, 9AM–6PM PKT</p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1596,8 +1635,12 @@ function applyFor(title) {
   showNotif('Redirected to contact form for: ' + title);
 }
 
-function submitForm() {
-  showNotif('Message sent. We will respond within one business day.');
+function openGmail(e, type) {
+  e.preventDefault();
+  var subject = encodeURIComponent(type + ' — Acreage Capital Solutions');
+  var body = encodeURIComponent('Hi Acreage Capital Solutions,\n\nI am reaching out regarding a ' + type + '.\n\n[Your message here]\n\nRegards,\n[Your Name]');
+  var gmail = 'https://mail.google.com/mail/?view=cm&fs=1&to=info@acreagecapital.pk&su=' + subject + '&body=' + body;
+  window.open(gmail, '_blank');
 }
 
 function showNotif(msg) {
